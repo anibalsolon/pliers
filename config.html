@@ -32,7 +32,6 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -112,6 +111,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#parallelization-bool-n-jobs-int">parallelization (bool), n_jobs (int)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#progress-bar-bool">progress_bar (bool)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#use-generators-bool">use_generators (bool)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#allow-large-jobs-bool">allow_large_jobs (bool)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#long-job-int">long_job (int)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#large-job-int">large_job (int)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#api-key-validation-bool">api_key_validation (bool)</a></li>
 </ul>
 </li>
 </ul>
@@ -215,7 +218,7 @@
 <tr class="row-even"><td><p>drop_bad_extractor_results</p></td>
 <td><p>bool</p></td>
 <td><p>True</p></td>
-<td><p>When <code class="code py python docutils literal notranslate"><span class="keyword constant"><span class="pre">True</span></span></code>, automatically removes any <code class="code py python docutils literal notranslate"><span class="keyword constant"><span class="pre">None</span></span></code> values returned by any Extractor</p></td>
+<td><p>When <code class="code py python docutils literal notranslate"><span class="name builtin pseudo"><span class="pre">True</span></span></code>, automatically removes any <code class="code py python docutils literal notranslate"><span class="name builtin pseudo"><span class="pre">None</span></span></code> values returned by any Extractor</p></td>
 </tr>
 <tr class="row-odd"><td><p>log_transformations</p></td>
 <td><p>bool</p></td>
@@ -225,7 +228,7 @@
 <tr class="row-even"><td><p>n_jobs</p></td>
 <td><p>int</p></td>
 <td><p>CPU-1.</p></td>
-<td><p>Number of simultaneous jobs to execute (if <code class="code py python docutils literal notranslate"><span class="name"><span class="pre">parallelize</span></span></code> is <code class="code py python docutils literal notranslate"><span class="keyword constant"><span class="pre">True</span></span></code>)</p></td>
+<td><p>Number of simultaneous jobs to execute (if <code class="code py python docutils literal notranslate"><span class="name"><span class="pre">parallelize</span></span></code> is <code class="code py python docutils literal notranslate"><span class="name builtin pseudo"><span class="pre">True</span></span></code>)</p></td>
 </tr>
 <tr class="row-odd"><td><p>parallelize</p></td>
 <td><p>bool</p></td>
@@ -241,6 +244,26 @@
 <td><p>bool</p></td>
 <td><p>False</p></td>
 <td><p>Whether Transformers should return generators rather than lists when iterating over Stims</p></td>
+</tr>
+<tr class="row-even"><td><p>allow_large_jobs</p></td>
+<td><p>bool</p></td>
+<td><p>True</p></td>
+<td><p>Whether to allow API jobs with a greater duration than in <cite>long_job</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p>long_job</p></td>
+<td><p>int</p></td>
+<td><p>60</p></td>
+<td><p>Maxmimum duration to allow for API jobs if <cite>allow_large_jobs</cite> is <cite>False</cite></p></td>
+</tr>
+<tr class="row-even"><td><p>large_job</p></td>
+<td><p>int</p></td>
+<td><p>100</p></td>
+<td><p>Maximum number of transformations allowed f <cite>allow_large_jobs</cite> is <cite>False</cite>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>api_key_validation</p></td>
+<td><p>bool</p></td>
+<td><p>False</p></td>
+<td><p>Explicitly validate API keys prior to attemping extraction</p></td>
 </tr>
 </tbody>
 </table>
@@ -267,12 +290,12 @@
 <div class="section" id="at-run-time">
 <h3>At run-time<a class="headerlink" href="#at-run-time" title="Permalink to this headline">¶</a></h3>
 <p>Package options can also be changed dynamically, via the <code class="docutils literal notranslate"><span class="pre">.get_option()</span></code> and <code class="docutils literal notranslate"><span class="pre">.set_option()</span></code> (or, for multiple options, <code class="docutils literal notranslate"><span class="pre">.set_options()</span></code>) accessors:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pliers</span> <span class="k">as</span> <span class="nn">pl</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pliers</span> <span class="kn">as</span> <span class="nn">pl</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s1">&#39;use_generators&#39;</span><span class="p">)</span>
 <span class="go">&#39;False&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;use_generators&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;use_generators&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
 <span class="go"># Or...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">set_options</span><span class="p">(</span><span class="n">use_generators</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">set_options</span><span class="p">(</span><span class="n">use_generators</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -309,6 +332,22 @@
 <div class="section" id="use-generators-bool">
 <h3>use_generators (bool)<a class="headerlink" href="#use-generators-bool" title="Permalink to this headline">¶</a></h3>
 <p>Internally, pliers uses generators whenever iteration over Stims occurs, in order to (potentially) reduce its memory footprint. However, generators can be confusing to users new to Python. To minimize confusion, pliers therefore converts all generators to lists before returning results to the user (or passing them as inputs to the next <code class="xref py py-class docutils literal notranslate"><span class="pre">Transformer</span></code> in a <code class="xref py py-class docutils literal notranslate"><span class="pre">Graph</span></code>). More experienced users who are comfortable with generator expressions and want to take advantage of their potential memory-saving benefits can enable generators by setting <code class="docutils literal notranslate"><span class="pre">use_generators</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code>. (Note that it is not a foregone conclusion that enabling generators will reduce memory consumption; if <a class="reference internal" href="#caching"><span class="std std-ref">caching</span></a> is enabled and/or the number of intermediate conversions is large, using generators is unlikely to help much.)</p>
+</div>
+<div class="section" id="allow-large-jobs-bool">
+<h3>allow_large_jobs (bool)<a class="headerlink" href="#allow-large-jobs-bool" title="Permalink to this headline">¶</a></h3>
+<p>By default, this is <cite>False</cite> and pliers will allow you to run arbitarily large jobs. However, this could be unexpectedly costly on paid remote APIs. To prevent unexpectedly large jobs from executing set this vaiable to <cite>True</cite>.</p>
+</div>
+<div class="section" id="long-job-int">
+<h3>long_job (int)<a class="headerlink" href="#long-job-int" title="Permalink to this headline">¶</a></h3>
+<p>This variable allows you to set the maximum stimulus duration that will be sent to API extractors, if <cite>allow_large_jobs</cite> is <cite>False</cite>.</p>
+</div>
+<div class="section" id="large-job-int">
+<h3>large_job (int)<a class="headerlink" href="#large-job-int" title="Permalink to this headline">¶</a></h3>
+<p>This variable allows you to set the maximum nmber of transformations (i.e. stimuli) that will be sent to API extractors, if <cite>allow_large_jobs</cite> is <cite>False</cite>.</p>
+</div>
+<div class="section" id="api-key-validation-bool">
+<h3>api_key_validation (bool)<a class="headerlink" href="#api-key-validation-bool" title="Permalink to this headline">¶</a></h3>
+<p>Explicilty validates the API keys prior to attempting remote feature extraction. Setting this to <cite>True</cite> will make it easier to diagnose if any errors with remote APIs is due to an invalid API key.</p>
 </div>
 </div>
 </div>

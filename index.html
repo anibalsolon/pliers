@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Pliers documentation &mdash; pliers 0.4.1 documentation</title>
+  <title>pliers: a python package for automated feature extraction &mdash; pliers 0.4.1 documentation</title>
   
 
   
@@ -32,7 +32,6 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -147,7 +146,7 @@
     
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Pliers documentation</li>
+      <li><em>pliers</em>: a python package for automated feature extraction</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -166,8 +165,97 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="pliers-documentation">
-<h1>Pliers documentation<a class="headerlink" href="#pliers-documentation" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pliers-a-python-package-for-automated-feature-extraction">
+<h1><em>pliers</em>: a python package for automated feature extraction<a class="headerlink" href="#pliers-a-python-package-for-automated-feature-extraction" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://pypi.python.org/pypi/pliers/"><img alt="PyPI version fury.io" src="https://badge.fury.io/py/pliers.svg" /></a> <img alt="pytest" src="https://github.com/PsychoinformaticsLab/pliers/actions/workflows/python-package.yml/badge.svg" /> <a class="reference external" href="https://coveralls.io/github/psychoinformaticslab/pliers?branch=master"><img alt="Coverage Status" src="https://coveralls.io/repos/github/psychoinformaticslab/pliers/badge.svg?branch=master" /></a>
+<a class="reference external" href="https://doi.org/10.1145/3097983.3098075"><img alt="DOI:10.1145/3097983.3098075" src="https://zenodo.org/badge/DOI/10.1145/3097983.3098075.svg" /></a></p>
+<p>Pliers is a Python package for automated extraction of features from
+multimodal stimuli. It provides a unified, standardized interface to
+dozens of different feature extraction tools and services–including
+many state-of-the-art deep learning-based models and content analysis
+APIs. It’s designed to let you rapidly and flexibly extract all kinds of
+useful information from videos, images, audio, and text.</p>
+<p>You might benefit from pliers if you need to accomplish any of the
+following tasks (and many others!):</p>
+<ul class="simple">
+<li><p>Identify objects or faces in a series of images</p></li>
+<li><p>Transcribe the speech in an audio or video file</p></li>
+<li><p>Apply sentiment analysis to text</p></li>
+<li><p>Extract musical features from an audio clip</p></li>
+<li><p>Apply a part-of-speech tagger to a block of text</p></li>
+</ul>
+<p>Each of the above tasks can typically be accomplished in 2 - 3 lines of
+code with pliers. Combining them <em>all</em>–and returning a single,
+standardized DataFrame–might take a bit more
+work. Say maybe 5 or 6 lines.</p>
+<p>In a nutshell, pliers provides a high-level, unified interface to a
+large number of feature extraction tools spanning a wide range of
+modalities.</p>
+<div class="section" id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>The official pliers documentation is comprehensive, and contains a
+<a class="reference external" href="http://psychoinformaticslab.github.io/pliers/quickstart.html">quickstart</a>,
+<a class="reference external" href="http://psychoinformaticslab.github.io/pliers/">user guide</a> and <a class="reference external" href="http://psychoinformaticslab.github.io/pliers/reference.html">API
+Reference</a>.</p>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Simply use pip to install the latest release:</p>
+<blockquote>
+<div><p>pip install pliers</p>
+</div></blockquote>
+<div class="section" id="dependencies">
+<h3>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h3>
+<p>Installing pliers with pip will only install third-party
+libraries that are essential for pliers to function properly. However,
+because pliers provides interfaces to a large number of feature
+extraction tools, there are dozens of optional dependencies that may be
+required depending on what kinds of features you plan to extract. You
+may install dependencies piece meal (pliers will alert you if
+you’re missing a depedency) or you may install all the required
+dependencies:</p>
+<blockquote>
+<div><p>pip install -r optional-dependencies.txt</p>
+</div></blockquote>
+<p>Note, that some of these Python dependencies may have their own requirements.
+For example, python-magic
+requires libmagic and without this, you’ll be relegated to loading all
+your stims explicitly rather than passing in filenames (i.e.,
+<code class="docutils literal notranslate"><span class="pre">stim</span> <span class="pre">=</span> <span class="pre">VideoStim('my_video.mp4')</span></code> will work fine, but passing
+‘my_video.mp4’ directly to an <code class="docutils literal notranslate"><span class="pre">Extractor</span></code> may not).</p>
+<div class="section" id="docker-image">
+<h4>Docker image<a class="headerlink" href="#docker-image" title="Permalink to this headline">¶</a></h4>
+<p>You may also use the provided <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> to build a complete Docker
+image which fulfills all the optional dependencies. Follow <a class="reference external" href="https://github.com/PsychoinformaticsLab/pliers/blob/master/docker/README.md">these
+instructions</a>.</p>
+</div>
+<div class="section" id="api-keys">
+<h4>API Keys<a class="headerlink" href="#api-keys" title="Permalink to this headline">¶</a></h4>
+<p>While installing pliers itself is straightforward, configuring web-based
+feature extraction APIs can take a more
+effort. For example, pliers includes support for face and object
+recognition via Google’s Cloud Vision API, and enables conversion of
+audio files to text transcripts via several different speech-to-text
+services. While some of these APIs are free to use (and usually provide
+a limited number of free monthly calls), they require users to
+register to received API credentials. More details on API key setup
+are available
+<a class="reference external" href="http://psychoinformaticslab.github.io/pliers/installation.html#api-keys">here</a>.</p>
+<p>Another option is to exclusively use local models and algorithms, such as
+the wide range covered by TensforFlow Hub using the <code class="docutils literal notranslate"><span class="pre">TFHubExtractor</span></code>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="how-to-cite">
+<h2>How to cite<a class="headerlink" href="#how-to-cite" title="Permalink to this headline">¶</a></h2>
+<p>If you use pliers in your work, please cite both the pliers and the following paper:</p>
+<blockquote>
+<div><p>McNamara, Q., De La Vega, A., &amp; Yarkoni, T. (2017, August).
+<a class="reference external" href="https://dl.acm.org/citation.cfm?id=3098075">Developing a comprehensive framework for multimodal feature
+extraction</a>. In
+Proceedings of the 23rd ACM SIGKDD International Conference on
+Knowledge Discovery and Data Mining (pp. 1567-1574). ACM.</p>
+</div></blockquote>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
@@ -208,6 +296,7 @@
 <li class="toctree-l1"><a class="reference internal" href="results.html">Results</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="results.html#the-extractorresult-class">The ExtractorResult class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="results.html#merging-extractor-results">Merging Extractor results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="results.html#converting-results-to-seriesstim">Converting results to SeriesStim</a></li>
 <li class="toctree-l2"><a class="reference internal" href="results.html#graph-results">Graph results</a></li>
 </ul>
 </li>
@@ -217,17 +306,18 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="reference.html">Pliers API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#converters-pliers-converters">Converters (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pliers.converters</span></code>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#dataset-utilities-pliers-datasets">Dataset utilities (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pliers.datasets</span></code>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#diagnostic-utilities-pliers-diagnostics">Diagnostic utilities (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pliers.diagnostics</span></code>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#extractors-pliers-extractors">Extractors (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pliers.extractors</span></code>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#filters-pliers-filters">Filters (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pliers.filters</span></code>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#graph-construction-pliers-graph">Graph construction (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pliers.graph</span></code>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#stimuli-pliers-stimuli">Stimuli (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pliers.stimuli</span></code>)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#transformers-pliers-transformers">Transformers (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pliers.transformers</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-pliers.converters">Converters (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pliers.converters</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-pliers.datasets">Dataset utilities (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pliers.datasets</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-pliers.diagnostics">Diagnostic utilities (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pliers.diagnostics</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-pliers.extractors">Extractors (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pliers.extractors</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-pliers.filters">Filters (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pliers.filters</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-pliers.graph">Graph construction (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pliers.graph</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-pliers.stimuli">Stimuli (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pliers.stimuli</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html#module-pliers.transformers">Transformers (<code class="xref py py-mod docutils literal notranslate"><span class="pre">pliers.transformers</span></code>)</a></li>
 </ul>
 </li>
 </ul>
+</div>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
