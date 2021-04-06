@@ -218,7 +218,7 @@
 <tr class="row-even"><td><p>drop_bad_extractor_results</p></td>
 <td><p>bool</p></td>
 <td><p>True</p></td>
-<td><p>When <code class="code py python docutils literal notranslate"><span class="name builtin pseudo"><span class="pre">True</span></span></code>, automatically removes any <code class="code py python docutils literal notranslate"><span class="name builtin pseudo"><span class="pre">None</span></span></code> values returned by any Extractor</p></td>
+<td><p>When <code class="code py python docutils literal notranslate"><span class="keyword constant"><span class="pre">True</span></span></code>, automatically removes any <code class="code py python docutils literal notranslate"><span class="keyword constant"><span class="pre">None</span></span></code> values returned by any Extractor</p></td>
 </tr>
 <tr class="row-odd"><td><p>log_transformations</p></td>
 <td><p>bool</p></td>
@@ -228,7 +228,7 @@
 <tr class="row-even"><td><p>n_jobs</p></td>
 <td><p>int</p></td>
 <td><p>CPU-1.</p></td>
-<td><p>Number of simultaneous jobs to execute (if <code class="code py python docutils literal notranslate"><span class="name"><span class="pre">parallelize</span></span></code> is <code class="code py python docutils literal notranslate"><span class="name builtin pseudo"><span class="pre">True</span></span></code>)</p></td>
+<td><p>Number of simultaneous jobs to execute (if <code class="code py python docutils literal notranslate"><span class="name"><span class="pre">parallelize</span></span></code> is <code class="code py python docutils literal notranslate"><span class="keyword constant"><span class="pre">True</span></span></code>)</p></td>
 </tr>
 <tr class="row-odd"><td><p>parallelize</p></td>
 <td><p>bool</p></td>
@@ -290,12 +290,12 @@
 <div class="section" id="at-run-time">
 <h3>At run-time<a class="headerlink" href="#at-run-time" title="Permalink to this headline">¶</a></h3>
 <p>Package options can also be changed dynamically, via the <code class="docutils literal notranslate"><span class="pre">.get_option()</span></code> and <code class="docutils literal notranslate"><span class="pre">.set_option()</span></code> (or, for multiple options, <code class="docutils literal notranslate"><span class="pre">.set_options()</span></code>) accessors:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pliers</span> <span class="kn">as</span> <span class="nn">pl</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pliers</span> <span class="k">as</span> <span class="nn">pl</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s1">&#39;use_generators&#39;</span><span class="p">)</span>
 <span class="go">&#39;False&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;use_generators&#39;</span><span class="p">,</span> <span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;use_generators&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 <span class="go"># Or...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">set_options</span><span class="p">(</span><span class="n">use_generators</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pl</span><span class="o">.</span><span class="n">set_options</span><span class="p">(</span><span class="n">use_generators</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">progress_bar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

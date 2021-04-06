@@ -175,9 +175,9 @@
 <h2>Face detection<a class="headerlink" href="#face-detection" title="Permalink to this headline">¶</a></h2>
 <p>This first example uses the face_recognition package’s location extraction method to detect the location of Barack Obama’s face within a single image. The tools used to do this are completely local (i.e., the image isn’t sent to an external API).</p>
 <p>We output the result as a pandas DataFrame; the ‘face_locations’ column contains the coordinates of the bounding box in CSS format (i.e., top, right, bottom, and left edges).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="k">import</span> <span class="n">FaceRecognitionFaceLocationsExtractor</span>
-<span class="kn">from</span> <span class="nn">os.path</span> <span class="k">import</span> <span class="n">join</span>
-<span class="kn">from</span> <span class="nn">pliers.tests.utils</span> <span class="k">import</span> <span class="n">get_test_data_path</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="kn">import</span> <span class="n">FaceRecognitionFaceLocationsExtractor</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span>
+<span class="kn">from</span> <span class="nn">pliers.tests.utils</span> <span class="kn">import</span> <span class="n">get_test_data_path</span>
 
 <span class="c1"># A picture of Barack Obama</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">get_test_data_path</span><span class="p">(),</span> <span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="s1">&#39;obama.jpg&#39;</span><span class="p">)</span>
@@ -248,7 +248,7 @@ the above snippet. The only notable difference is that, because the
 result we get back is now also a list (because the features extracted
 from each image are stored separately), we need to explicitly combine
 the results using the <code class="docutils literal notranslate"><span class="pre">merge_results</span></code> utility.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="k">import</span> <span class="n">FaceRecognitionFaceLocationsExtractor</span><span class="p">,</span> <span class="n">merge_results</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="kn">import</span> <span class="n">FaceRecognitionFaceLocationsExtractor</span><span class="p">,</span> <span class="n">merge_results</span>
 
 <span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apple.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;obama.jpg&#39;</span><span class="p">,</span> <span class="s1">&#39;thai_people.jpg&#39;</span><span class="p">]</span>
 <span class="n">images</span> <span class="o">=</span> <span class="p">[</span><span class="n">join</span><span class="p">(</span><span class="n">get_test_data_path</span><span class="p">(),</span> <span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="n">img</span><span class="p">)</span> <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">images</span><span class="p">]</span>
@@ -374,7 +374,7 @@ use of the <code class="docutils literal notranslate"><span class="pre">GoogleVi
 successful execution of this code requires you to have a
 <code class="docutils literal notranslate"><span class="pre">GOOGLE_APPLICATION_CREDENTIALS</span></code> environment variable pointing to your
 Google credentials JSON file. See the documentation for more details.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="k">import</span> <span class="n">GoogleVisionAPIFaceExtractor</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="kn">import</span> <span class="n">GoogleVisionAPIFaceExtractor</span>
 
 <span class="n">ext</span> <span class="o">=</span> <span class="n">GoogleVisionAPIFaceExtractor</span><span class="p">()</span>
 <span class="n">image</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">get_test_data_path</span><span class="p">(),</span> <span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="s1">&#39;obama.jpg&#39;</span><span class="p">)</span>
@@ -731,8 +731,8 @@ whereas the initialization of <code class="docutils literal notranslate"><span c
 previous examples.</p>
 <div class="section" id="treat-text-as-a-single-block">
 <h3>Treat text as a single block<a class="headerlink" href="#treat-text-as-a-single-block" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.stimuli</span> <span class="k">import</span> <span class="n">TextStim</span><span class="p">,</span> <span class="n">ComplexTextStim</span>
-<span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="k">import</span> <span class="n">VADERSentimentExtractor</span><span class="p">,</span> <span class="n">merge_results</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.stimuli</span> <span class="kn">import</span> <span class="n">TextStim</span><span class="p">,</span> <span class="n">ComplexTextStim</span>
+<span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="kn">import</span> <span class="n">VADERSentimentExtractor</span><span class="p">,</span> <span class="n">merge_results</span>
 
 <span class="n">raw</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;We&#39;re not claiming that VADER is a very good sentiment analysis tool.</span>
 <span class="s2">Sentiment analysis is a really, really difficult problem. But just to make a</span>
@@ -998,7 +998,7 @@ previous examples.</p>
 extract the normalized energy in each of the 12 pitch classes). This is
 trivial thanks to pliers’ support for the <code class="docutils literal notranslate"><span class="pre">librosa</span></code> package, which
 contains all kinds of useful functions for spectral feature extraction.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="k">import</span> <span class="n">ChromaSTFTExtractor</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="kn">import</span> <span class="n">ChromaSTFTExtractor</span>
 
 <span class="n">audio</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">get_test_data_path</span><span class="p">(),</span> <span class="s1">&#39;audio&#39;</span><span class="p">,</span> <span class="s1">&#39;barber.wav&#39;</span><span class="p">)</span>
 <span class="c1"># Audio is sampled at 11KHz; let&#39;s compute power in 1 sec bins</span>
@@ -1441,8 +1441,8 @@ key set up appropriately (if you don’t have an API key, and don’t want
 to set one up, you can replace <code class="docutils literal notranslate"><span class="pre">ClarifaiAPIImageExtractor</span></code> with
 <code class="docutils literal notranslate"><span class="pre">TFHubExtractor</span></code> to get similar, though not quite as
 accurate, results).</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.filters</span> <span class="k">import</span> <span class="n">FrameSamplingFilter</span>
-<span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="k">import</span> <span class="n">ClarifaiAPIImageExtractor</span><span class="p">,</span> <span class="n">merge_results</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.filters</span> <span class="kn">import</span> <span class="n">FrameSamplingFilter</span>
+<span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="kn">import</span> <span class="n">ClarifaiAPIImageExtractor</span><span class="p">,</span> <span class="n">merge_results</span>
 
 <span class="n">video</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">get_test_data_path</span><span class="p">(),</span> <span class="s1">&#39;video&#39;</span><span class="p">,</span> <span class="s1">&#39;small.mp4&#39;</span><span class="p">)</span>
 
@@ -1815,11 +1815,11 @@ word frequency, etc.) for every word in the transcript;</p></li>
 now we’re going to extract <em>all</em> of them at once. As it turns out, the
 code looks almost exactly like a concatenated version of several of our
 examples above.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.tests.utils</span> <span class="k">import</span> <span class="n">get_test_data_path</span>
-<span class="kn">from</span> <span class="nn">os.path</span> <span class="k">import</span> <span class="n">join</span>
-<span class="kn">from</span> <span class="nn">pliers.filters</span> <span class="k">import</span> <span class="n">FrameSamplingFilter</span>
-<span class="kn">from</span> <span class="nn">pliers.converters</span> <span class="k">import</span> <span class="n">GoogleSpeechAPIConverter</span>
-<span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="k">import</span> <span class="p">(</span><span class="n">ClarifaiAPIImageExtractor</span><span class="p">,</span> <span class="n">GoogleVisionAPIFaceExtractor</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.tests.utils</span> <span class="kn">import</span> <span class="n">get_test_data_path</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span>
+<span class="kn">from</span> <span class="nn">pliers.filters</span> <span class="kn">import</span> <span class="n">FrameSamplingFilter</span>
+<span class="kn">from</span> <span class="nn">pliers.converters</span> <span class="kn">import</span> <span class="n">GoogleSpeechAPIConverter</span>
+<span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="kn">import</span> <span class="p">(</span><span class="n">ClarifaiAPIImageExtractor</span><span class="p">,</span> <span class="n">GoogleVisionAPIFaceExtractor</span><span class="p">,</span>
                                <span class="n">ComplexTextExtractor</span><span class="p">,</span> <span class="n">PredefinedDictionaryExtractor</span><span class="p">,</span>
                                <span class="n">STFTAudioExtractor</span><span class="p">,</span> <span class="n">VADERSentimentExtractor</span><span class="p">,</span>
                                <span class="n">merge_results</span><span class="p">)</span>
@@ -2081,11 +2081,11 @@ don’t need to initialize with custom arguments can be passed to the
 <p>The upshot of all this is that, in just a few lines of Python code,
 we’re abvle to extract a broad range of multimodal features from video,
 image, audio or text inputs, using state-of-the-art tools and services!</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.tests.utils</span> <span class="k">import</span> <span class="n">get_test_data_path</span>
-<span class="kn">from</span> <span class="nn">os.path</span> <span class="k">import</span> <span class="n">join</span>
-<span class="kn">from</span> <span class="nn">pliers.graph</span> <span class="k">import</span> <span class="n">Graph</span>
-<span class="kn">from</span> <span class="nn">pliers.filters</span> <span class="k">import</span> <span class="n">FrameSamplingFilter</span>
-<span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="k">import</span> <span class="p">(</span><span class="n">PredefinedDictionaryExtractor</span><span class="p">,</span> <span class="n">STFTAudioExtractor</span><span class="p">,</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pliers.tests.utils</span> <span class="kn">import</span> <span class="n">get_test_data_path</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span>
+<span class="kn">from</span> <span class="nn">pliers.graph</span> <span class="kn">import</span> <span class="n">Graph</span>
+<span class="kn">from</span> <span class="nn">pliers.filters</span> <span class="kn">import</span> <span class="n">FrameSamplingFilter</span>
+<span class="kn">from</span> <span class="nn">pliers.extractors</span> <span class="kn">import</span> <span class="p">(</span><span class="n">PredefinedDictionaryExtractor</span><span class="p">,</span> <span class="n">STFTAudioExtractor</span><span class="p">,</span>
                                <span class="n">merge_results</span><span class="p">)</span>
 
 

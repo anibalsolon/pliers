@@ -278,7 +278,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TranscribedAudioCompoundStim</span><span class="p">(</span><span class="n">CompoundStim</span><span class="p">):</span>
 
     <span class="n">_allowed_types</span> <span class="o">=</span> <span class="p">(</span><span class="n">AudioStim</span><span class="p">,</span> <span class="n">ComplexTextStim</span><span class="p">)</span>
-    <span class="n">_allow_multiple</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="n">_allow_multiple</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">_primary</span> <span class="o">=</span> <span class="n">AudioStim</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">audio</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
@@ -314,7 +314,7 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pliers.stimuli</span> <span class="kn">import</span> <span class="n">ComplexTextStim</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cts</span> <span class="o">=</span> <span class="n">ComplexTextStim</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">&quot;This class method uses the default nltk word tokenizer, which will split this sentence into a list of TextStims, each representing a single word.&quot;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">cts</span><span class="p">:</span>
-<span class="gp">&gt;&gt;&gt; </span>   <span class="k">print</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>   <span class="nb">print</span><span class="p">(</span><span class="n">ts</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 <span class="go">&quot;This&quot;</span>
 <span class="go">&quot;class&quot;</span>
 <span class="go">&quot;method&quot;</span>
@@ -328,7 +328,7 @@
 <p>Some <code class="xref py py-class docutils literal notranslate"><span class="pre">Stim</span></code> classes inherently have a temporal dimension (e.g., <code class="xref py py-class docutils literal notranslate"><span class="pre">VideoStim</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">AudioStim</span></code>). However, even a static <code class="xref py py-class docutils literal notranslate"><span class="pre">Stim</span></code> instance such as an <code class="xref py py-class docutils literal notranslate"><span class="pre">ImageStim</span></code> or a <code class="xref py py-class docutils literal notranslate"><span class="pre">TextStim</span></code> will often be assigned <code class="code py python docutils literal notranslate"><span class="operator"><span class="pre">.</span></span><span class="name"><span class="pre">onset</span></span></code> and <code class="code py python docutils literal notranslate"><span class="operator"><span class="pre">.</span></span><span class="name"><span class="pre">duration</span></span></code> properties during initialization. Typically, this happens because the static <code class="xref py py-class docutils literal notranslate"><span class="pre">Stim</span></code> is understood to be embedded within some temporal context. Consider the following code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">vs</span> <span class="o">=</span> <span class="n">VideoStim</span><span class="p">(</span><span class="s1">&#39;my_video.mp4&#39;</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">frame_200</span> <span class="o">=</span> <span class="n">vs</span><span class="o">.</span><span class="n">get_frame</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">frame_200</span><span class="o">.</span><span class="n">onset</span><span class="p">,</span> <span class="n">frame_200</span><span class="o">.</span><span class="n">duration</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">frame_200</span><span class="o">.</span><span class="n">onset</span><span class="p">,</span> <span class="n">frame_200</span><span class="o">.</span><span class="n">duration</span><span class="p">)</span>
 <span class="go">6.666666666666667, 0.03333333333333333</span>
 </pre></div>
 </div>

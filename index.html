@@ -225,9 +225,11 @@ your stims explicitly rather than passing in filenames (i.e.,
 ‘my_video.mp4’ directly to an <code class="docutils literal notranslate"><span class="pre">Extractor</span></code> may not).</p>
 <div class="section" id="docker-image">
 <h4>Docker image<a class="headerlink" href="#docker-image" title="Permalink to this headline">¶</a></h4>
-<p>You may also use the provided <code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> to build a complete Docker
-image which fulfills all the optional dependencies. Follow <a class="reference external" href="https://github.com/PsychoinformaticsLab/pliers/blob/master/docker/README.md">these
-instructions</a>.</p>
+<p>You may also use the provided Docker image which fulfills all the optional dependencies.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">p</span> <span class="mi">8888</span><span class="p">:</span><span class="mi">8888</span> <span class="n">ghcr</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="n">psychoinformaticslab</span><span class="o">/</span><span class="n">pliers</span><span class="p">:</span><span class="n">unstable</span>
+</pre></div>
+</div>
+<p>Follow <a class="reference external" href="http://psychoinformaticslab.github.io/pliers/installation.html#docker">these instructions</a>.</p>
 </div>
 <div class="section" id="api-keys">
 <h4>API Keys<a class="headerlink" href="#api-keys" title="Permalink to this headline">¶</a></h4>
@@ -260,7 +262,8 @@ Knowledge Discovery and Data Mining (pp. 1567-1574). ACM.</p>
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installing pliers</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="installation.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#pip">PIP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#docker">Docker</a></li>
 <li class="toctree-l2"><a class="reference internal" href="installation.html#api-keys">API Keys</a></li>
 </ul>
 </li>
